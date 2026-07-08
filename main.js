@@ -1,6 +1,7 @@
-import { loadState, saveState, clearState } from "./services/storage.js";
-import { loadJson } from "./utils/data.js";
-import { calculateScores, pickPrimaryAndSecondary } from "./utils/score.js";
+// 因为 main.js 在根目录，进 src 找文件夹
+import { loadState, saveState, clearState } from "./src/services/storage.js";
+import { loadJson } from "./src/utils/data.js";
+import { calculateScores, pickPrimaryAndSecondary } from "./src/utils/score.js";
 
 const app = document.querySelector("#app");
 
@@ -339,13 +340,14 @@ async function bootstrap() {
   bindEvents();
 
   try {
-    // 使用 ../ 跳出 src 目录，进入根目录的 data 文件夹
-const [config, dimensions, questions, personalities] = await Promise.all([
-  loadJson("../data/config.json"),
-  loadJson("../data/dimensions.json"),
-  loadJson("../data/questions.json"),
-  loadJson("../data/personalities.json")
-]);
+  // 因为 main.js 和 data 都在根目录，直接找 ./data/
+  const [config, dimensions, questions, personalities] = await Promise.all([
+    loadJson("./data/config.json"),
+    loadJson("./data/dimensions.json"),
+    loadJson("./data/questions.json"),
+    loadJson("./data/personalities.json")
+  ]);
+  
 
     model.config = config;
     model.dimensions = dimensions;

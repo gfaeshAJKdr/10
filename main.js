@@ -236,7 +236,11 @@ function renderSummary() {
   const title = personality?.title || "人格画像";
   const rarity = personality?.rarity || "未知";
   const quote = personality?.quote || "——";
-  const analysis = personality?.description || "暂无详细分析。"; 
+
+  // --- 这里获取拆分后的三个字段 ---
+  const analysis = personality?.description || "暂无详细分析。";
+  const trigger = personality?.darkTrigger || "暂无相关场景。";
+  const reminder = personality?.kindReminder || "暂无额外提醒。";
 
   return `
     <main class="view summary">
@@ -251,9 +255,19 @@ function renderSummary() {
         ${renderSpiderChart(scores)}
       </section>
 
-      <h3>📝 人格深度分析：</h3>
+      <h3>📝 核心分析</h3>
       <section class="card">
         <p>${escapeHtml(analysis)}</p>
+      </section>
+
+      <h3>🌑 暗黑场景激发</h3>
+      <section class="card">
+        <p>${escapeHtml(trigger)}</p>
+      </section>
+
+      <h3>💡 善意提醒</h3>
+      <section class="card">
+        <p>${escapeHtml(reminder)}</p>
       </section>
 
       <button class="button primary" data-action="restart" style="margin-top: 20px;">

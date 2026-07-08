@@ -35,7 +35,7 @@ button {
   width: min(100%, 520px);
   min-height: 100vh;
   margin: 0 auto;
-  padding: 28px 18px 112px;
+  padding: 28px 24px 112px;
 }
 
 .view {
@@ -83,7 +83,7 @@ button {
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--surface-strong), var(--surface));
   box-shadow: var(--shadow);
-  padding: 24px; /* 已优化：增加了内边距 */
+  padding: 24px 32px; /* 已优化：增加了内边距 */
 }
 
 .home-card,

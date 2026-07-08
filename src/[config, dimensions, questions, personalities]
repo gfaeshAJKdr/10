@@ -339,12 +339,13 @@ async function bootstrap() {
   bindEvents();
 
   try {
-    const [config, dimensions, questions, personalities] = await Promise.all([
-      loadJson("src/data/config.json"),
-      loadJson("src/data/dimensions.json"),
-      loadJson("src/data/questions.json"),
-      loadJson("src/data/personalities.json")
-    ]);
+    // 使用 ../ 跳出 src 目录，进入根目录的 data 文件夹
+const [config, dimensions, questions, personalities] = await Promise.all([
+  loadJson("../data/config.json"),
+  loadJson("../data/dimensions.json"),
+  loadJson("../data/questions.json"),
+  loadJson("../data/personalities.json")
+]);
 
     model.config = config;
     model.dimensions = dimensions;
